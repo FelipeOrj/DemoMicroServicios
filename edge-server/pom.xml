@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId> com.spring-netflix-oss.microservices</groupId>
-	<artifactId>edge - server</artifactId>
+	<artifactId>edge-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>edge - server</name>
 	<description>Demo project for Spring Boot</description>
