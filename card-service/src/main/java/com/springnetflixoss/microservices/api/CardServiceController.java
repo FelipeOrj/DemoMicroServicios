@@ -18,7 +18,10 @@ import com.springnetflixoss.microservices.model.Card;
 @RequestMapping(value="/api")
 public class CardServiceController {
 	private List<Card> fakeRepo;
-    
+	private static final String CARDS = "/cards";
+	private static final String CARDSINGLE = "/card/{cardId}";
+	private static final String NEWCARD = "/new-card";
+	
     @PostConstruct
     public void init(){
         this.fakeRepo = new ArrayList<>();
@@ -31,12 +34,12 @@ public class CardServiceController {
         fakeRepo.add(new Card(7l, "Adolf Bianc", String.valueOf(Math.random()).substring(0, 16),"07/22"));
     }
     
-    @RequestMapping(value="/cards", method = RequestMethod.GET)
+    @RequestMapping(value = CARDS, method = RequestMethod.GET)
     public List<Card> getCards() {
         return fakeRepo;
     }
     
-    @RequestMapping(value="/card/{cardId}", method = RequestMethod.GET)
+    @RequestMapping(value = CARDSINGLE, method = RequestMethod.GET)
     public Card getCard(@PathVariable Long cardId) {
         return Optional.ofNullable(
                 fakeRepo
@@ -50,7 +53,7 @@ public class CardServiceController {
          
     }
     
-    @RequestMapping(value = "/new-card", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = NEWCARD, method = RequestMethod.POST, headers = "Accept=application/json")
     public void createCard(@RequestBody Card newCard) {
         if(newCard.getId()!=null){
             fakeRepo.add(newCard);
