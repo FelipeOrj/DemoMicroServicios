@@ -47,7 +47,7 @@ public class CardServiceController {
                 .filter((card) -> card.getId().equals(cardId))
                 .reduce(null, (u, v) -> {
                     if (u != null && v != null)
-                        throw new IllegalStateException("More than one CardId found");
+                        throw new IllegalStateException("Más de un Id de tarjeta encontrado");
                     else return u == null ? v : u;
                 })).get();
          
